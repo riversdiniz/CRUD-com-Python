@@ -21,5 +21,7 @@ def create(request):
         form.save()
         return redirect('home')
 
-def view(request):
-    return render(request, 'view.html')
+def view(request, pk):
+    data = {}
+    data['db'] = Carros.objects.get(pk=pk)
+    return render(request, 'view.html', data)
